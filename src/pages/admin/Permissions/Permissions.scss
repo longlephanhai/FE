@@ -1,0 +1,45 @@
+.permissions-form {
+  &__submit {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    width: 100%; // Đầy đủ chiều rộng ở các thiết bị nhỏ hơn
+
+    &:hover {
+      background-color: #40a9ff;
+    }
+  }
+
+  &__table {
+
+    .ant-table-thead>tr>th,
+    .ant-table-tbody>tr>td {
+      text-align: center;
+      padding: 10px;
+      vertical-align: middle;
+    }
+
+    .ant-checkbox-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .table-container {
+    overflow-x: auto; // Cho phép cuộn ngang nếu bảng quá rộng
+    width: 100%;
+
+    @media (max-width: 768px) {
+
+      // Điều chỉnh thêm cho thiết bị di động
+      .permissions-form__table {
+        min-width: 600px; // Thiết lập độ rộng tối thiểu cho bảng để cuộn qua lại
+      }
+    }
+  }
+}

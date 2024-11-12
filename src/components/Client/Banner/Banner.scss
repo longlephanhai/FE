@@ -1,0 +1,75 @@
+.banner {
+  position: relative;
+  height: 80vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &__content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    animation: slideIn 1s forwards;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    animation: slideIn 1.5s forwards;
+  }
+
+  &__button {
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: #cc5200; // Màu khi hover
+    }
+  }
+}
+
+// Hiệu ứng animation
+@keyframes fadeIn {
+  to {
+    opacity: 1; // Đặt độ mờ thành 1 khi hoàn tất
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px); // Bắt đầu từ vị trí thấp hơn
+    opacity: 0; // Ẩn nội dung
+  }
+
+  to {
+    transform: translateY(0); // Trở về vị trí ban đầu
+    opacity: 1; // Đặt độ mờ thành 1 khi hoàn tất
+  }
+}

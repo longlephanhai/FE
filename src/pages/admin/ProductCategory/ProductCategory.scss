@@ -1,0 +1,125 @@
+.product-category {
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      flex-direction: column; // Đặt tiêu đề và nút thêm mới thành cột khi màn hình nhỏ
+      align-items: flex-start;
+    }
+  }
+
+  &__list-text {
+    font-size: 16px;
+    font-weight: 500;
+
+    @media (max-width: 768px) {
+      font-size: 14px; // Giảm kích thước chữ trên màn hình nhỏ
+    }
+  }
+
+
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    &-header {
+      background-color: #f5f5f5;
+    }
+
+    &-row {
+      border-bottom: 1px solid #ddd;
+
+      @media (max-width: 768px) {
+        display: block; // Hiển thị hàng dưới dạng khối trên màn hình nhỏ
+        margin-bottom: 10px; // Khoảng cách giữa các hàng
+      }
+    }
+
+    &-cell {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+
+      @media (max-width: 768px) {
+        display: block; // Hiển thị ô dưới dạng khối trên màn hình nhỏ
+        text-align: right; // Căn lề phải cho ô
+      }
+    }
+
+    &-body {
+      &-row {
+        &:hover {
+          background-color: #f9f9f9;
+        }
+      }
+    }
+  }
+}
+
+.product-category-tree {
+  &__row {
+    border-bottom: 1px solid #ddd;
+  }
+
+  &__cell {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+
+    @media (max-width: 768px) {
+      display: block; // Hiển thị ô dưới dạng khối trên màn hình nhỏ
+      text-align: right; // Căn lề phải cho ô
+    }
+  }
+
+  &__thumbnail {
+    width: 100px;
+    height: auto;
+
+    @media (max-width: 768px) {
+      width: 80px; // Giảm kích thước hình ảnh trên màn hình nhỏ
+    }
+  }
+
+  &__position {
+    width: 60px;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; // Cho phép các nút chuyển sang hàng khác nếu không đủ chỗ
+
+    @media (max-width: 768px) {
+      justify-content: center; // Căn giữa các nút trên màn hình nhỏ
+    }
+  }
+
+  &__button {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+
+
+    @media (max-width: 768px) {
+      font-size: 12px; // Giảm kích thước chữ trên màn hình nhỏ
+      padding: 4px 8px; // Giảm padding trên màn hình nhỏ
+    }
+  }
+}

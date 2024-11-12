@@ -1,0 +1,124 @@
+.login__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+
+
+  .login {
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    &__input {
+      margin-bottom: 1.5rem;
+
+      &--email,
+      &--password {
+        margin-bottom: 1rem;
+
+        label {
+          display: block;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: #333;
+        }
+
+        input {
+          width: 100%;
+          padding: 0.85rem;
+          font-size: 1rem;
+          border-radius: 50px;
+          border: 1px solid #ddd;
+          background-color: #f9f9f9;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+          &:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+          }
+
+          &:hover {
+            border-color: #007bff;
+          }
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.85rem;
+      font-size: 1rem;
+      background: linear-gradient(135deg, #007bff, #00d4ff);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.4s ease, transform 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+
+      &:hover {
+        background: linear-gradient(135deg, #0056b3, #009fd9);
+        transform: translateY(-3px);
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+  }
+
+  // Responsive design for tablets
+  @media screen and (max-width: 768px) {
+    .login {
+      max-width: 90%;
+      padding: 1.5rem;
+
+      &__input {
+
+        &--email,
+        &--password {
+          input {
+            padding: 0.75rem;
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      button {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  // Responsive design for mobile phones
+  @media screen and (max-width: 480px) {
+    .login {
+      padding: 1rem;
+
+      &__input {
+
+        &--email,
+        &--password {
+          input {
+            padding: 0.5rem;
+            font-size: 0.5rem;
+          }
+        }
+      }
+
+      button {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
