@@ -1,4 +1,5 @@
-export const backendDomin = "http://localhost:8080"
+// export const backendDomin = "http://localhost:8080"
+export const backendDomin = "https://be-5zob.onrender.com"
 const Summary = {
   signUp: {
     url: `${backendDomin}/api/auth/login`,
