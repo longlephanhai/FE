@@ -7,11 +7,10 @@ import { Link } from 'react-router-dom'
 import { FaCartShopping } from "react-icons/fa6";
 import { toast } from 'react-toastify'
 import { RxAvatar } from "react-icons/rx";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import SubMenu from '../SubMenu/SubMenu'
+import { logout } from '../../../actions/client'
 const Header = ({ logo }) => {
-  console.log(logo);
-
   const userSelector = useSelector(state => state.siginInReducer)
   const [isLogin, setIsLogin] = useState(false)
   const [user, setUser] = useState(null)
@@ -27,30 +26,35 @@ const Header = ({ logo }) => {
   useEffect(() => {
     checkToken();
   }, [userSelector]);
+  const dispatch = useDispatch()
   const handleLogout = async () => {
     const response = await axios.get(Summary.logoutUser.url, { withCredentials: true })
     if (response.data.success) {
       setIsLogin(false)
       setUser(null)
+      dispatch(logout())
+      setCartItems([])
       toast.success(response.data.message)
     }
   }
 
   const count = useSelector(state => state.countReducer)
-
   const [cartItems, setCartItems] = useState([]);
   const fetchApi = async () => {
     const response = await axios.get(Summary.getCart.url, { withCredentials: true })
     if (response.data.success) {
-      for (const item of response.data.cart.products) {
-        item.product_id.quantity = 1
-      }
-      setCartItems(response.data.cart.products)
+      const updatedCart = response.data.cart.products.map(item => ({
+        ...item,
+        product_id: { ...item.product_id, quantity: 1 },
+      }));
+      setCartItems(updatedCart);
     }
   }
   useEffect(() => {
-    fetchApi()
-  }, [count])
+    if (isLogin) {
+      fetchApi();
+    }
+  }, [isLogin, count]);
 
   return (
     <header className="header">
@@ -86,10 +90,9 @@ const Header = ({ logo }) => {
           </div>
           <a href="/cart" className="header__cart">Giỏ hàng <FaCartShopping />
             {
-              cartItems.length || count > 0 ?
-                <span className="header__cart-notice">({cartItems.length})</span>
-                :
-                null
+              <span className="header__cart-notice">
+                ({cartItems.length || count > 0 ? cartItems.length : 0})
+              </span>
             }
           </a>
           <a href='/order'>Đơn hàng</a>

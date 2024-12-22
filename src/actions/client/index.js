@@ -4,6 +4,11 @@ export const signIn = (data) => {
     data: data
   }
 }
+export const logout = () => {
+  return {
+    type: "LOGOUT",
+  }
+}
 export const count = (data) => {
   return {
     type: "COUNT",

@@ -7,6 +7,9 @@ import axios from 'axios'
 import Summary from '../../../API'
 import { toast } from 'react-toastify'
 import { signIn } from '../../../actions/client'
+import img from '../../../assets/images/col2_htb_img_1.webp'
+import UseFetchHook from '../../../components/Client/UseFetchHook/UseFetchHook';
+
 const SignIn = () => {
   const navigate = useNavigate()
   const checkToken = async () => {
@@ -45,12 +48,36 @@ const SignIn = () => {
       toast.error(response.data.message)
     }
   }
+
+  // login with google
+  const { handleGoogle, loading, error } = UseFetchHook(
+    Summary.googleLogin.url
+  );
+
+  useEffect(() => {
+    /* global google */
+    if (window.google) {
+      google.accounts.id.initialize({
+        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        callback: handleGoogle,
+      });
+
+      google.accounts.id.renderButton(document.getElementById("loginDiv"), {
+        theme: "outline",
+        // text: "signin_with",
+        shape: "circle",
+      });
+
+      // google.accounts.id.prompt()
+    }
+  }, []);
+
   return (
     <div className="login">
       <div className="login__overlay"></div>
       <div className="login__container">
         <div className="login__image">
-          <img src="/assets/bookstore.jpg" alt="Book Store" />
+          <img src={img} alt="Book Store" />
         </div>
         <div className="login__content">
           <h2 className="login__title">Đăng nhập</h2>
@@ -82,10 +109,13 @@ const SignIn = () => {
               />
             </div>
             <p className='login__forgotPassword' onClick={() => navigate('forgot-password')}>Quên mật khẩu?</p>
-            <button type="submit" className="login__button">Login</button>
+            <button type="submit" className="login__button">Đăng nhập</button>
+            <div className='login__google'>
+              hoặc <div id="loginDiv"></div>
+            </div>
           </form>
           <p className="login__footer">
-            Bạn chưa có tài khoản <Link to="/sign-up" className="login__link">Đăng ký</Link>
+            Bạn chưa có tài khoản? <Link to="/sign-up" className="login__link">Đăng ký</Link>
           </p>
         </div>
       </div>

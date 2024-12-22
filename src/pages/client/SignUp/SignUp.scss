@@ -5,13 +5,16 @@ $text-color: #2c3e50;
 $input-bg-color: #f7f7f7;
 
 .signup {
+  min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  // height: 100vh;
   background-color: $background-color;
   position: relative;
   overflow: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   &__overlay {
     position: absolute;

@@ -3,6 +3,9 @@ import './Cart.scss';
 import axios from 'axios';
 import Summary from '../../../API';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { count } from '../../../actions/client';
+import { toast } from 'react-toastify';
 
 
 const Cart = () => {
@@ -36,13 +39,15 @@ const Cart = () => {
     }
   };
 
-
+  const dispatch = useDispatch()
   const handleRemoveItem = async (id) => {
     const response = await axios.post(Summary.deleteCart.url, { id }, { withCredentials: true })
     if (response.data.success) {
+      dispatch(count(-1))
       fetchApi()
     }
   };
+
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
     let total = 0;
@@ -55,6 +60,10 @@ const Cart = () => {
   // thanh toán
   const navigate = useNavigate();
   const handleCheckout = async () => {
+    if(cartItems.length === 0) {
+      toast.error('Giỏ hàng của bạn đang trống');
+      return;
+    }
     localStorage.setItem('total', totalPrice);
     navigate('/payment');
   }

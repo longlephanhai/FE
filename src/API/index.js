@@ -1,5 +1,5 @@
-// export const backendDomin = "http://localhost:8080"
-export const backendDomin = "https://be-5zob.onrender.com"
+export const backendDomin = "http://localhost:8080"
+// export const backendDomin = "https://be-5zob.onrender.com"
 const Summary = {
   signUp: {
     url: `${backendDomin}/api/auth/login`,
@@ -228,6 +228,10 @@ const Summary = {
   basicArea: {
     url: `${backendDomin}/api/basicChart`,
     method: "get"
+  },
+  googleLogin:{
+    url: `${backendDomin}/api/user/login-google`,
+    method: "post"
   }
 }
 export default Summary;

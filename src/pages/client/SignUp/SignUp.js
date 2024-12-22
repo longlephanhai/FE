@@ -4,6 +4,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import Summary from '../../../API';
+import img from '../../../assets/images/col2_htb_img_1.webp'
 import { Link, useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const navigate = useNavigate()
@@ -71,7 +72,7 @@ const SignUp = () => {
       <div className="signup__overlay"></div>
       <div className="signup__container">
         <div className="signup__image">
-          <img src="/assets/bookstore.jpg" alt="Book Store" />
+          <img src={img} alt="Book Store" />
         </div>
         <div className="signup__content">
           <h2 className="signup__title">Tạo tài khoản</h2>
